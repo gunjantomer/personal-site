@@ -9,7 +9,8 @@ import { draftMode } from 'next/headers';
 // import ExitDraftModeLink from './ExitDraftModeLink';
 import { Footer } from './components/footer';
 import { Navbar } from './components/nav';
-// import './globals.css';
+import './globals.css';
+import Providers from './components/provider';
 // config.autoAddCss = false;
 
 export const metadata: Metadata = {
@@ -48,28 +49,23 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang='en'
-      className={cx(
-        'dark bg-white text-black dark:bg-[#111010] dark:text-white'
-        // GeistSans.variable,
-        // GeistMono.variable
-      )}
-    >
+    <html lang='en'>
       <head></head>
-      <body className='mx-4 mb-40 mt-8 flex max-w-[80vw] flex-col antialiased md:flex-row lg:mx-auto'>
-        {/* {(await draftMode()).isEnabled && (
+      <body className='mx-4 mb-40 mt-8 flex max-w-[80vw] flex-col antialiased md:flex-row lg:mx-auto bg-white dark:bg-[#111010]'>
+        <Providers>
+          {/* {(await draftMode()).isEnabled && (
           <p className='bg-orange-200 px-[6vw] py-4'>
             Draft mode is on! <ExitDraftModeLink className='underline' />
           </p>
         )} */}
-        <main className='mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0'>
-          <Navbar />
-          {children}
-          <Footer />
-          {/* <Analytics />
+          <main className='mt-32 flex min-w-0 flex-auto flex-col px-2 md:px-0'>
+            <Navbar />
+            {children}
+            <Footer />
+            {/* <Analytics />
           <SpeedInsights /> */}
-        </main>
+          </main>
+        </Providers>
       </body>
     </html>
   );

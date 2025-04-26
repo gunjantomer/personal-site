@@ -1,37 +1,51 @@
-// "use client";
-// import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { useEffect, useState } from "react";
+'use client';
+import { joinClassNames } from '@/lib/utils';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 
-// export default function ThemeSwitcher() {
-//   const [darkMode, setDarkMode] = useState(true);
+const ThemeToggle = ({ classNames }: { classNames?: string }) => {
+  const [isClient, setIsClient] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-//   useEffect(() => {
-//     const isDarkMode = localStorage.getItem("darkMode") === "true";
-//     setDarkMode(isDarkMode);
-//   }, []);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
-//   useEffect(() => {
-//     document.documentElement.classList.toggle("dark", darkMode);
-//     localStorage.setItem("darkMode", darkMode.toString());
-//   }, [darkMode]);
+  const currentToggleState = isClient
+    ? theme === 'dark'
+      ? 'left-0'
+      : 'right-0'
+    : 'left-0';
+  const [toggleState, setToggleState] = useState(currentToggleState);
 
-//   const toggleDarkMode = () => {
-//     setDarkMode((prevMode) => !prevMode);
-//   };
+  return (
+    <div className={joinClassNames(classNames, 'self-center')}>
+      <button
+        onClick={() => {
+          theme === 'light'
+            ? (setTheme('dark'), setToggleState('left-0'))
+            : (setTheme('light'), setToggleState('right-0'));
+        }}
+        className='inline-flex justify-center items-center border-[2px] border-gray-300 w-[60px] h-[32px] rounded-xl relative gap-2'
+      >
+        <div
+          className={joinClassNames(
+            'absolute w-[1.5rem] h-[1.5rem] m-1 rounded-xl bg-white border-[2px] border-gray-300 transition-all duration-300 ease-in-out',
+            toggleState
+          )}
+        ></div>
+        <BsFillMoonStarsFill
+          id='theme-toggle-dark-icon'
+          className='w-5 h-5 text-elm'
+        />
+        <BsFillSunFill
+          id='theme-toggle-light-icon'
+          className='w-5 h-5 text-coral'
+        />
+      </button>
+    </div>
+  );
+};
 
-//   return (
-//     <div
-//       className="block text-xl absolute right-0 content-center text-slate-500
-//         hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200
-//         cursor-pointer"
-//     >
-//       <div className="dark:hidden" onClick={toggleDarkMode}>
-//         <FontAwesomeIcon icon={faMoon} />
-//       </div>
-//       <div className="hidden dark:block" onClick={toggleDarkMode}>
-//         <FontAwesomeIcon icon={faSun} />
-//       </div>
-//     </div>
-//   );
-// }
+export default ThemeToggle;
