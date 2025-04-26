@@ -16,7 +16,7 @@ interface BlogPostPageProps {
 
 // Tell Next.js about all our blog posts so
 // they can be statically generated at build time.
-export async function generateStaticParams(): Promise<Object[]> {
+export async function generateStaticParams(): Promise<object[]> {
   const blogPosts = await fetchBlogPosts();
 
   return blogPosts.map((post) => ({ slug: post.slug }));

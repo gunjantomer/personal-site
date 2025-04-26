@@ -17,7 +17,7 @@ export default async function Projects() {
       <h1 className=' text-black dark:text-white'>My Projects</h1>
       <div className='justify-items-auto inline-grid w-full grid-cols-3 gap-4'>
         {projects.map((project) => {
-          let parsedImage = parseContentfulContentImage(
+          const parsedImage = parseContentfulContentImage(
             project?.image?.fields as AssetFields
           );
           return (

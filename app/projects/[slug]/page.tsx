@@ -16,14 +16,16 @@ interface ProjectPageProps {
 
 // Tell Next.js about all our blog posts so
 // they can be statically generated at build time.
-export async function generateStaticParams(): Promise<Object[]> {
+export async function generateStaticParams(): Promise<object[]> {
   const projects = await fetchProjectsList();
   return projects.map((post) => ({ slug: post.slug }));
 }
 
 // For each blog post, tell Next.js which metadata
 // (e.g. page title) to display.
-export async function generateMetadata(props: ProjectPageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: ProjectPageProps
+): Promise<Metadata> {
   const params = await props.params;
   const project = await fetchProject(params.slug);
 

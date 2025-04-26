@@ -5,7 +5,7 @@
 // import { GeistMono } from 'geist/font/mono';
 // import { GeistSans } from 'geist/font/sans';
 import type { Metadata } from 'next';
-import { draftMode } from 'next/headers';
+// import { draftMode } from 'next/headers';
 // import ExitDraftModeLink from './ExitDraftModeLink';
 import { Footer } from './components/footer';
 import { Navbar } from './components/nav';
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
 };
 
-const cx = (...classes) => classes.filter(Boolean).join(' ');
+// const cx = (...classes) => classes.filter(Boolean).join(' ');
 
 export default async function RootLayout({
   children,

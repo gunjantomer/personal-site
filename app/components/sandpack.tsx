@@ -21,15 +21,15 @@ class ErrorBoundary extends React.Component<
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError() {
     return { hasError: true };
   }
 
   render() {
     if (this.state.hasError) {
       return (
-        <div className="px-4 py-3 border border-red-700 bg-red-200 rounded p-1 text-sm flex items-center text-red-900 mb-8">
-          <div className="w-full callout">{this.props.fallback}</div>
+        <div className='px-4 py-3 border border-red-700 bg-red-200 rounded p-1 text-sm flex items-center text-red-900 mb-8'>
+          <div className='w-full callout'>{this.props.fallback}</div>
         </div>
       );
     }
@@ -60,7 +60,7 @@ export function LiveCode({ example }: { example: string }) {
           fallback={'Oops, there was an error loading the CodeSandbox'}
         >
           <Sandpack
-            theme="auto"
+            theme='auto'
             files={{
               'App.tsx': {
                 code: stylexApp,
@@ -73,7 +73,7 @@ export function LiveCode({ example }: { example: string }) {
                 hidden: true,
               },
             }}
-            template="vite-react-ts"
+            template='vite-react-ts'
             customSetup={{
               dependencies: {
                 '@stylexjs/stylex': '^0.3.0',
@@ -93,7 +93,7 @@ export function LiveCode({ example }: { example: string }) {
       <ErrorBoundary
         fallback={'Oops, there was an error loading the CodeSandbox.'}
       >
-        <Sandpack theme="auto" template="static" files={files} />
+        <Sandpack theme='auto' template='static' files={files} />
       </ErrorBoundary>
     </Suspense>
   );

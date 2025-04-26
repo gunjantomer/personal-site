@@ -10,11 +10,11 @@ const client = contentful.createClient({
   retryLimit: 100,
 });
 
-export function parseEntry(entry?: Entry): Object | null {
+export function parseEntry(entry?: Entry): object | null {
   return { ...entry?.fields };
 }
 
-export async function getTemplateEntry(params: Object): Promise<Object | null> {
+export async function getTemplateEntry(params: object): Promise<object | null> {
   const resp = await client.getEntries(params);
 
   return parseEntry(resp.items[0]);

@@ -3,7 +3,7 @@ export default function Page() {
     <section>
       <h1 className='font-medium text-2xl mb-8 tracking-tighter'>Hey there!</h1>
       <p className='prose prose-neutral dark:prose-invert'>
-        I'm Gunjan Tomer, an engineer and experimenter.
+        I&apos;m Gunjan Tomer, an engineer and experimenter.
       </p>
     </section>
   );

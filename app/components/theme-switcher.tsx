@@ -23,9 +23,13 @@ const ThemeToggle = ({ classNames }: { classNames?: string }) => {
     <div className={joinClassNames(classNames, 'self-center')}>
       <button
         onClick={() => {
-          theme === 'light'
-            ? (setTheme('dark'), setToggleState('left-0'))
-            : (setTheme('light'), setToggleState('right-0'));
+          if (theme === 'light') {
+            setTheme('dark');
+            setToggleState('left-0');
+          } else {
+            setTheme('light');
+            setToggleState('right-0');
+          }
         }}
         className='inline-flex justify-center items-center border-[2px] border-gray-300 w-[60px] h-[32px] rounded-xl relative gap-2'
       >
