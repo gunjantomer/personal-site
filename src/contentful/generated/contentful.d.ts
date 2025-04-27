@@ -51,6 +51,15 @@ export interface IProjectFields {
 
   /** Link */
   link?: string | undefined;
+
+  /** Github Link */
+  githubLink?: string | undefined;
+
+  /** Web Link */
+  webLink?: string | undefined;
+
+  /** Skill badges */
+  skillBadges?: string[] | undefined;
 }
 
 /** An individual project item. */
