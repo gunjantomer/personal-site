@@ -10,7 +10,9 @@ import type { Metadata } from 'next';
 import { Footer } from './components/footer';
 import { Navbar } from './components/nav';
 import './globals.css';
+import { Barlow } from 'next/font/google';
 import Providers from './components/provider';
+import { joinClassNames } from '@/lib/utils';
 // config.autoAddCss = false;
 
 export const metadata: Metadata = {
@@ -41,6 +43,11 @@ export const metadata: Metadata = {
   },
 };
 
+const font = Barlow({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+});
+
 // const cx = (...classes) => classes.filter(Boolean).join(' ');
 
 export default async function RootLayout({
@@ -51,14 +58,19 @@ export default async function RootLayout({
   return (
     <html lang='en'>
       <head></head>
-      <body className='mx-4 mb-40 mt-8 flex max-w-[80vw] flex-col antialiased md:flex-row lg:mx-auto bg-white dark:bg-[#111010]'>
+      <body className='sm:mx-4 sm:mb-40 sm:mt-8 flex max-w-[80vw] flex-col antialiased sm:flex-row lg:mx-auto bg-white dark:bg-[#111010]'>
         <Providers>
           {/* {(await draftMode()).isEnabled && (
           <p className='bg-orange-200 px-[6vw] py-4'>
             Draft mode is on! <ExitDraftModeLink className='underline' />
           </p>
         )} */}
-          <main className='mt-32 flex min-w-0 flex-auto flex-col px-2 md:px-0'>
+          <main
+            className={joinClassNames(
+              'mt-8 sm:mt-32 flex min-w-0 flex-auto flex-col px-2 md:px-0',
+              `${font.className}`
+            )}
+          >
             <Navbar />
             {children}
             <Footer />
