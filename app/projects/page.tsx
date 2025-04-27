@@ -9,7 +9,9 @@ import Link from 'next/link';
 import RichText from '@/lib/RichText';
 import { parseContentfulContentImage } from '@/lib/contentImage';
 import { fetchProjectsList } from './projects';
-import { FaGithubAlt } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
+import { TbWorldWww } from 'react-icons/tb';
+import { Badge } from '@/components/ui/badge';
 export default async function Projects() {
   const projects = await fetchProjectsList();
   return (
@@ -22,7 +24,7 @@ export default async function Projects() {
           );
           return (
             <Card key={project.title}>
-              <CardHeader>{project.title}</CardHeader>
+              <CardHeader className='text-2xl'>{project.title}</CardHeader>
               <CardContent>
                 {parsedImage && (
                   <img
@@ -36,17 +38,35 @@ export default async function Projects() {
                   />
                 )}
                 <RichText document={project.description!} />
+                {project.skillBadges && (
+                  <div className='flex flex-wrap gap-2'>
+                    {project.skillBadges.map((skillBadge) => (
+                      <Badge key={skillBadge}>{skillBadge}</Badge>
+                    ))}
+                  </div>
+                )}
               </CardContent>
-              <CardFooter>
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className={
-                    'dark:text-white font-semibold inline-flex items-center'
-                  }
-                >
-                  <FaGithubAlt className='mr-1 mt-1' />
-                  View project on Github
-                </Link>
+              <CardFooter className='gap-4'>
+                {project.webLink && (
+                  <Link
+                    href={`/projects/${project.webLink}`}
+                    className={
+                      'dark:text-white font-semibold inline-flex items-center'
+                    }
+                  >
+                    <FaGithub className='mr-1 mt-1' size={25} />
+                  </Link>
+                )}
+                {project.githubLink && (
+                  <Link
+                    href={`/projects/${project.githubLink}`}
+                    className={
+                      'dark:text-white font-semibold inline-flex items-center'
+                    }
+                  >
+                    <TbWorldWww className='mr-1 mt-1' size={25} />
+                  </Link>
+                )}
               </CardFooter>
             </Card>
           );
