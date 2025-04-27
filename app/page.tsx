@@ -6,7 +6,7 @@ export default function Page() {
         I&apos;m
         <br />
         <strong className='text-2xl'>Gunjan Tomer</strong>
-        <br /> An engineer, explorer, and busybody.
+        <br /> An engineer, explorer, and perpetual learner.
       </p>
     </section>
   );
