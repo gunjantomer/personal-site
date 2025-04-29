@@ -1,23 +1,22 @@
-import { getTemplateEntry } from 'app/api/contentful/fetch-content';
-import {
-  ICard,
-  IProject,
-  IProjectFields,
-  ISoftwareEngineerPortfolioFields,
-} from 'src/contentful/generated/contentful';
-import RichText from '@/lib/RichText';
+import { Badge } from '@/components/ui/badge';
 import {
   Card,
-  CardHeader,
   CardContent,
   CardFooter,
+  CardHeader,
 } from '@/components/ui/card';
+import { parseContentfulContentImage } from '@/lib/contentImage';
+import RichText from '@/lib/RichText';
+import { getTemplateEntry } from 'app/api/contentful/fetch-content';
+import { AssetFields } from 'contentful';
+import Link from 'next/link';
 import { FaGithub } from 'react-icons/fa';
 import { TbWorldWww } from 'react-icons/tb';
-import { parseContentfulContentImage } from '@/lib/contentImage';
-import { AssetFields } from 'contentful';
-import { Badge } from '@/components/ui/badge';
-import Link from 'next/link';
+import {
+  ICard,
+  ICardFields,
+  ISoftwareEngineerPortfolioFields,
+} from 'src/contentful/generated/contentful';
 
 export default async function Portfolio() {
   const portfolioEntry = (await getTemplateEntry({
@@ -28,7 +27,7 @@ export default async function Portfolio() {
     <main>
       {portfolioEntry.experienceCards &&
         portfolioEntry.experienceCards.map((card: ICard) => {
-          const cardProps = card.fields as IProjectFields;
+          const cardProps = card.fields as ICardFields;
           const parsedImage = parseContentfulContentImage(
             cardProps?.image?.fields as AssetFields
           );
