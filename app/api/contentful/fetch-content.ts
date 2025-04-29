@@ -21,10 +21,12 @@ export async function getTemplateEntry(params: object): Promise<object | null> {
 }
 
 export async function getTemplateEntries(
-  entryId: string
+  entryId: string,
+  params?: object
 ): Promise<Entry[] | null> {
   const resp = await client.getEntries({
     content_type: entryId,
+    ...params,
     include: 10,
   });
 
