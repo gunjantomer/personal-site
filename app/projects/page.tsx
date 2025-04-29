@@ -60,9 +60,9 @@ export default async function Projects() {
                     <FaExternalLinkAlt className='mr-1 mt-1' size={25} />
                   </Link>
                 )}
-                {project.webLink && (
+                {project.githubLink && (
                   <Link
-                    href={`${project.webLink}`}
+                    href={`${project.githubLink}`}
                     className={
                       'dark:text-white font-semibold inline-flex items-center'
                     }
@@ -70,9 +70,9 @@ export default async function Projects() {
                     <FaGithub className='mr-1 mt-1' size={25} />
                   </Link>
                 )}
-                {project.githubLink && (
+                {project.webLink && (
                   <Link
-                    href={`${project.githubLink}`}
+                    href={`${project.webLink}`}
                     className={
                       'dark:text-white font-semibold inline-flex items-center'
                     }
