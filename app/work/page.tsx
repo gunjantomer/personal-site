@@ -1,5 +1,6 @@
 import { getTemplateEntry } from 'app/api/contentful/fetch-content';
 import {
+  ICard,
   IProject,
   IProjectFields,
   ISoftwareEngineerPortfolioFields,
@@ -25,10 +26,8 @@ export default async function Portfolio() {
 
   return (
     <main>
-      <h1>{portfolioEntry.name}</h1>
-      <RichText document={portfolioEntry.bio!} />
       {portfolioEntry.experienceCards &&
-        portfolioEntry.experienceCards.map((card: IProject) => {
+        portfolioEntry.experienceCards.map((card: ICard) => {
           const cardProps = card.fields as IProjectFields;
           const parsedImage = parseContentfulContentImage(
             cardProps?.image?.fields as AssetFields
@@ -51,7 +50,7 @@ export default async function Portfolio() {
                 )}
                 <RichText document={cardProps.description!} />
                 {cardProps.skillBadges && (
-                  <div className='flex flex-wrap gap-2'>
+                  <div className='flex flex-wrap gap-2 mt-6'>
                     {cardProps.skillBadges.map((skillBadge) => (
                       <Badge key={skillBadge}>{skillBadge}</Badge>
                     ))}
