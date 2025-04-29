@@ -1,6 +1,22 @@
 import { getTemplateEntry } from 'app/api/contentful/fetch-content';
-import { ISoftwareEngineerPortfolioFields } from 'src/contentful/generated/contentful';
+import {
+  IProject,
+  IProjectFields,
+  ISoftwareEngineerPortfolioFields,
+} from 'src/contentful/generated/contentful';
 import RichText from '@/lib/RichText';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+} from '@/components/ui/card';
+import { FaGithub } from 'react-icons/fa';
+import { TbWorldWww } from 'react-icons/tb';
+import { parseContentfulContentImage } from '@/lib/contentImage';
+import { AssetFields } from 'contentful';
+import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
 
 export default async function Portfolio() {
   const portfolioEntry = (await getTemplateEntry({
@@ -11,6 +27,62 @@ export default async function Portfolio() {
     <main>
       <h1>{portfolioEntry.name}</h1>
       <RichText document={portfolioEntry.bio!} />
+      {portfolioEntry.experienceCards &&
+        portfolioEntry.experienceCards.map((card: IProject) => {
+          const cardProps = card.fields as IProjectFields;
+          const parsedImage = parseContentfulContentImage(
+            cardProps?.image?.fields as AssetFields
+          );
+          return (
+            <Card key={cardProps.title}>
+              <CardHeader className='text-3xl'>{cardProps.title}</CardHeader>
+              <CardContent className='flex flex-col'>
+                {parsedImage && (
+                  <img
+                    src={parsedImage.src}
+                    // Use the Contentful Images API to render
+                    // responsive images. No next/image required:
+                    srcSet={`${parsedImage.src}?w=300 1x, ${parsedImage.src} 2x`}
+                    width={500}
+                    height={400}
+                    alt={parsedImage.alt}
+                    className='self-center'
+                  />
+                )}
+                <RichText document={cardProps.description!} />
+                {cardProps.skillBadges && (
+                  <div className='flex flex-wrap gap-2'>
+                    {cardProps.skillBadges.map((skillBadge) => (
+                      <Badge key={skillBadge}>{skillBadge}</Badge>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+              <CardFooter className='gap-4'>
+                {cardProps.githubLink && (
+                  <Link
+                    href={`${cardProps.githubLink}`}
+                    className={
+                      'dark:text-white font-semibold inline-flex items-center'
+                    }
+                  >
+                    <FaGithub className='mr-1 mt-1' size={25} />
+                  </Link>
+                )}
+                {cardProps.webLink && (
+                  <Link
+                    href={`${cardProps.webLink}`}
+                    className={
+                      'dark:text-white font-semibold inline-flex items-center'
+                    }
+                  >
+                    <TbWorldWww className='mr-1 mt-1' size={25} />
+                  </Link>
+                )}
+              </CardFooter>
+            </Card>
+          );
+        })}
     </main>
   );
 }

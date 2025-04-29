@@ -6,7 +6,6 @@
     "start": "next start",
     "lint": "next lint",
     "setup": "node ./lib/setup.js",
-    "cf-types": "export $(cat .env.local | awk '!/^\\s*#/' | awk '!/^\\s*$/'); cf-content-types-generator --spaceId $CONTENTFUL_SPACE_ID --token $CONTENTFUL_MANAGEMENT_TOKEN -o src/contentful/types -X && prettier --write src/contentful/types",
     "codegen": "contentful-typescript-codegen --output src/contentful/generated/contentful.d.ts"
   },
   "dependencies": {
