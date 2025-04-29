@@ -28,8 +28,9 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
+
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -62,7 +63,13 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
+    nav a {
+      @apply dark:shadow-[inset_0_0_0_0_white] dark:text-white dark:hover:shadow-[inset_100px_0_0_0_white] dark:hover:text-[black] text-black hover:text-[white] hover:shadow-[inset_100px_0_0_0_black] shadow-[inset_0_0_0_0_black];
+      transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
 }

@@ -24,17 +24,18 @@ export default async function Projects() {
           );
           return (
             <Card key={project.title}>
-              <CardHeader className='text-2xl'>{project.title}</CardHeader>
-              <CardContent>
+              <CardHeader className='text-3xl'>{project.title}</CardHeader>
+              <CardContent className='flex flex-col'>
                 {parsedImage && (
                   <img
                     src={parsedImage.src}
                     // Use the Contentful Images API to render
                     // responsive images. No next/image required:
                     srcSet={`${parsedImage.src}?w=300 1x, ${parsedImage.src} 2x`}
-                    width={367}
-                    height={300}
+                    width={500}
+                    height={400}
                     alt={parsedImage.alt}
+                    className='self-center'
                   />
                 )}
                 <RichText document={project.description!} />

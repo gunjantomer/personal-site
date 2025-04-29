@@ -21,7 +21,7 @@ export function Navbar() {
     <aside className='-ml-[8px] mb-16 tracking-tight'>
       <div className='flex lg:sticky lg:top-20'>
         <nav
-          className='flex flex-row basis-full items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative'
+          className='flex flex-row basis-full items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative animate-fadeIn'
           id='nav'
         >
           <div className='flex flex-row space-x-0 pr-10 gap-3'>
@@ -30,7 +30,7 @@ export function Navbar() {
                 <Link
                   key={path}
                   href={path}
-                  className='transition-all text-lg sm:text-3xl hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2'
+                  className='text-lg sm:text-3xl flex align-middle relative py-1 px-2'
                 >
                   {name}
                 </Link>
