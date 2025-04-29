@@ -11,7 +11,9 @@ import { parseContentfulContentImage } from '@/lib/contentImage';
 import { fetchProjectsList } from './projects';
 import { FaGithub } from 'react-icons/fa';
 import { TbWorldWww } from 'react-icons/tb';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 import { Badge } from '@/components/ui/badge';
+
 export default async function Projects() {
   const projects = await fetchProjectsList();
   return (
@@ -48,9 +50,19 @@ export default async function Projects() {
                 )}
               </CardContent>
               <CardFooter className='gap-4'>
+                {project.link && (
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className={
+                      'dark:text-white font-semibold inline-flex items-center'
+                    }
+                  >
+                    <FaExternalLinkAlt className='mr-1 mt-1' size={25} />
+                  </Link>
+                )}
                 {project.webLink && (
                   <Link
-                    href={`/projects/${project.webLink}`}
+                    href={`${project.webLink}`}
                     className={
                       'dark:text-white font-semibold inline-flex items-center'
                     }
@@ -60,7 +72,7 @@ export default async function Projects() {
                 )}
                 {project.githubLink && (
                   <Link
-                    href={`/projects/${project.githubLink}`}
+                    href={`${project.githubLink}`}
                     className={
                       'dark:text-white font-semibold inline-flex items-center'
                     }

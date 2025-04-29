@@ -15,13 +15,11 @@ export async function fetchProjectsList() {
   );
 }
 
-// TODO: Fix individual project page
 // A function to fetch a single project card by its slug.
 export async function fetchProject(slug: string) {
   const project = (await getTemplateEntry({
     content_type: 'project',
     'fields.slug': slug,
-    'fields.cardType': 'Project',
     include: 1,
   })) as IProject;
 
