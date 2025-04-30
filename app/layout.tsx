@@ -16,16 +16,16 @@ import { joinClassNames } from '@/lib/utils';
 // config.autoAddCss = false;
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://nextjs-portfolio-psi.vercel.app/'),
+  metadataBase: new URL('https://www.gunjantomer.com'),
   title: {
     default: 'Gunjan Tomer',
     template: '%s | Gunjan Tomer',
   },
-  description: 'Developer, experimenter, and busybody.',
+  description: 'Developer, experimenter, and perpetual learner.',
   openGraph: {
     title: 'Gunjan Tomer',
-    description: 'Engineer, developer, and experimenter',
-    url: 'https://nextjs-portfolio-psi.vercel.app/',
+    description: 'Engineer, explorer, and perpetual learner.',
+    url: 'https://www.gunjantomer.com',
     siteName: 'Gunjan Tomer',
     locale: 'en_US',
     type: 'website',

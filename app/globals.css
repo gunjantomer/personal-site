@@ -69,7 +69,7 @@
   }
 
     nav a {
-      @apply dark:shadow-[inset_0_0_0_0_white] dark:text-white dark:hover:shadow-[inset_100px_0_0_0_white] dark:hover:text-[black] text-black hover:text-[white] hover:shadow-[inset_100px_0_0_0_black] shadow-[inset_0_0_0_0_black];
+      @apply dark:shadow-[inset_0_0_0_0_white] dark:text-white dark:hover:shadow-[inset_130px_0_0_0_white] dark:hover:text-[black] text-black hover:text-[white] hover:shadow-[inset_130px_0_0_0_black] shadow-[inset_0_0_0_0_black];
       transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
 }
