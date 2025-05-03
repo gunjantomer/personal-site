@@ -70,7 +70,8 @@ export default async function RootLayout({
         )} */}
           <main
             className={joinClassNames(
-              'mx-auto mt-8 flex max-w-[1200px] flex-auto flex-col px-2 sm:mt-32 md:px-0',
+              `mx-auto mt-8 flex max-w-[90vw] sm:max-w-[1200px] flex-auto flex-col px-2
+              sm:mt-32 md:px-0`,
               `${font.className}`,
             )}
           >

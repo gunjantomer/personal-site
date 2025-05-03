@@ -18,19 +18,20 @@ const navItems = {
 
 export function Navbar() {
   return (
-    <aside className='-ml-[8px] mb-16 tracking-tight'>
-      <div className='flex lg:sticky lg:top-20'>
+    <aside className="-ml-[8px] mb-16 tracking-tight">
+      <div className="flex flex-col sm:flex-row lg:sticky lg:top-20">
         <nav
-          className='flex flex-row basis-full items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative animate-fadeIn'
-          id='nav'
+          className="flex flex-row basis-full items-start relative px-0 pb-0 fade md:overflow-auto
+            scroll-pr-6 md:relative animate-fadeIn"
+          id="nav"
         >
-          <div className='flex flex-row space-x-0 pr-10 gap-3'>
+          <div className="flex flex-row space-x-0 pr-10 gap-3">
             {Object.entries(navItems).map(([path, { name }]) => {
               return (
                 <Link
                   key={path}
                   href={path}
-                  className='text-lg sm:text-3xl flex align-middle relative py-1 px-2'
+                  className="text-lg sm:text-3xl flex align-middle relative py-1 px-2"
                 >
                   {name}
                 </Link>
@@ -38,7 +39,7 @@ export function Navbar() {
             })}
           </div>
         </nav>
-        <ThemeSwitcher classNames='flex flex-end' />
+        <ThemeSwitcher classNames="flex flex-end self-end" />
       </div>
     </aside>
   );

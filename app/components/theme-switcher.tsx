@@ -20,7 +20,7 @@ const ThemeToggle = ({ classNames }: { classNames?: string }) => {
   const [toggleState, setToggleState] = useState(currentToggleState);
 
   return (
-    <div className={joinClassNames(classNames, 'self-center')}>
+    <div className={classNames}>
       <button
         onClick={() => {
           if (theme === 'light') {
@@ -31,21 +31,23 @@ const ThemeToggle = ({ classNames }: { classNames?: string }) => {
             setToggleState('right-0');
           }
         }}
-        className='inline-flex justify-center items-center border-[2px] border-gray-300 w-[60px] h-[32px] rounded-xl relative gap-2'
+        className="inline-flex justify-center items-center border-[2px] border-gray-300 w-[60px]
+          h-[32px] rounded-xl relative gap-2"
       >
         <div
           className={joinClassNames(
-            'absolute w-[1.5rem] h-[1.5rem] m-1 rounded-xl bg-white border-[2px] border-gray-300 transition-all duration-300 ease-in-out',
-            toggleState
+            `absolute w-[1.5rem] h-[1.5rem] m-1 rounded-xl bg-white border-[2px]
+            border-gray-300 transition-all duration-300 ease-in-out`,
+            toggleState,
           )}
         ></div>
         <BsFillMoonStarsFill
-          id='theme-toggle-dark-icon'
-          className='w-5 h-5 text-elm'
+          id="theme-toggle-dark-icon"
+          className="w-5 h-5 text-elm"
         />
         <BsFillSunFill
-          id='theme-toggle-light-icon'
-          className='w-5 h-5 text-coral'
+          id="theme-toggle-light-icon"
+          className="w-5 h-5 text-coral"
         />
       </button>
     </div>

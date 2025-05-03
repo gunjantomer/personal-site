@@ -32,14 +32,17 @@ export default async function Portfolio() {
             cardProps?.image?.fields as AssetFields,
           );
           return (
-            <div className="grid grid-cols-12">
-              <div className="col-span-1 col-start-1 my-8">2018-2020</div>
+            <div
+              key={cardProps.title}
+              className="flex flex-col max-w-[90vw] mx-auto md:grid md:grid-cols-6 lg:grid-cols-12"
+            >
+              <div className="col-span-1 col-start-1 md:my-8">2018-2020</div>
               <Card
-                key={cardProps.title}
-                className="col-span-11 col-start-2 ml-8 scale-100 transform-gpu overflow-hidden
-                  border-transparent bg-transparent outline-none duration-300 lg:transition
-                  hover:scale-[103%] hover:bg-slate-300 dark:hover:bg-[#161e30] hover:shadow-lg
-                  lg:hover:shadow-slate-500/50"
+                className="md:col-span-5 md:col-start-2 lg:col-span-11 mt-5 sm:mt-0 md:ml-8 scale-100
+                  transform-gpu overflow-hidden ring-2 ring-slate-500 md:ring-transparent
+                  md:shadow-none border-transparent bg-transparent outline-none duration-300
+                  lg:transition hover:scale-[103%] hover:bg-slate-300 dark:hover:bg-[#161e30]
+                  hover:shadow-lg hover:shadow-slate-500/50"
               >
                 <CardHeader className="text-3xl">{cardProps.title}</CardHeader>
                 <CardContent className="flex flex-col">
