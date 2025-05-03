@@ -56,9 +56,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <head></head>
-      <body className='sm:mx-4 sm:mb-40 sm:mt-8 flex max-w-[80vw] flex-col antialiased sm:flex-row lg:mx-auto bg-white dark:bg-[#111010]'>
+      <body
+        className="max-w-screen flex flex-col bg-white px-8 antialiased dark:bg-gray-700 sm:mx-4
+          sm:mb-40 sm:mt-8 sm:flex-row lg:mx-auto"
+      >
         <Providers>
           {/* {(await draftMode()).isEnabled && (
           <p className='bg-orange-200 px-[6vw] py-4'>
@@ -67,8 +70,8 @@ export default async function RootLayout({
         )} */}
           <main
             className={joinClassNames(
-              'mt-8 sm:mt-32 flex min-w-0 flex-auto flex-col px-2 md:px-0',
-              `${font.className}`
+              'mx-auto mt-8 flex max-w-[1200px] flex-auto flex-col px-2 sm:mt-32 md:px-0',
+              `${font.className}`,
             )}
           >
             <Navbar />

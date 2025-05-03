@@ -29,56 +29,65 @@ export default async function Portfolio() {
         portfolioEntry.experienceCards.map((card: ICard) => {
           const cardProps = card.fields as ICardFields;
           const parsedImage = parseContentfulContentImage(
-            cardProps?.image?.fields as AssetFields
+            cardProps?.image?.fields as AssetFields,
           );
           return (
-            <Card key={cardProps.title}>
-              <CardHeader className='text-3xl'>{cardProps.title}</CardHeader>
-              <CardContent className='flex flex-col'>
-                {parsedImage && (
-                  <img
-                    src={parsedImage.src}
-                    // Use the Contentful Images API to render
-                    // responsive images. No next/image required:
-                    srcSet={`${parsedImage.src}?w=300 1x, ${parsedImage.src} 2x`}
-                    width={500}
-                    height={400}
-                    alt={parsedImage.alt}
-                    className='self-center'
-                  />
-                )}
-                <RichText document={cardProps.description!} />
-                {cardProps.skillBadges && (
-                  <div className='flex flex-wrap gap-2 mt-6'>
-                    {cardProps.skillBadges.map((skillBadge) => (
-                      <Badge key={skillBadge}>{skillBadge}</Badge>
-                    ))}
-                  </div>
-                )}
-              </CardContent>
-              <CardFooter className='gap-4'>
-                {cardProps.githubLink && (
-                  <Link
-                    href={`${cardProps.githubLink}`}
-                    className={
-                      'dark:text-white font-semibold inline-flex items-center'
-                    }
-                  >
-                    <FaGithub className='mr-1 mt-1' size={25} />
-                  </Link>
-                )}
-                {cardProps.webLink && (
-                  <Link
-                    href={`${cardProps.webLink}`}
-                    className={
-                      'dark:text-white font-semibold inline-flex items-center'
-                    }
-                  >
-                    <TbWorldWww className='mr-1 mt-1' size={25} />
-                  </Link>
-                )}
-              </CardFooter>
-            </Card>
+            <div className="grid grid-cols-12">
+              <div className="col-span-1 col-start-1 my-8">2018-2020</div>
+              <Card
+                key={cardProps.title}
+                className="col-span-11 col-start-2 ml-8 scale-100 transform-gpu overflow-hidden
+                  border-transparent bg-transparent outline-none duration-300 lg:transition
+                  hover:scale-[103%] hover:bg-slate-300 dark:hover:bg-[#161e30] hover:shadow-lg
+                  lg:hover:shadow-slate-500/50"
+              >
+                <CardHeader className="text-3xl">{cardProps.title}</CardHeader>
+                <CardContent className="flex flex-col">
+                  {parsedImage && (
+                    <img
+                      src={parsedImage.src}
+                      // Use the Contentful Images API to render
+                      // responsive images. No next/image required:
+                      srcSet={`${parsedImage.src}?w=300 1x, ${parsedImage.src} 2x`}
+                      width={500}
+                      height={400}
+                      alt={parsedImage.alt}
+                      className="self-center"
+                    />
+                  )}
+                  <RichText document={cardProps.description!} />
+                  {cardProps.skillBadges && (
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {cardProps.skillBadges.map((skillBadge) => (
+                        <Badge key={skillBadge}>{skillBadge}</Badge>
+                      ))}
+                    </div>
+                  )}
+                </CardContent>
+                <CardFooter className="gap-4">
+                  {cardProps.githubLink && (
+                    <Link
+                      href={`${cardProps.githubLink}`}
+                      className={
+                        'inline-flex items-center font-semibold dark:text-white'
+                      }
+                    >
+                      <FaGithub className="mr-1 mt-1" size={25} />
+                    </Link>
+                  )}
+                  {cardProps.webLink && (
+                    <Link
+                      href={`${cardProps.webLink}`}
+                      className={
+                        'inline-flex items-center font-semibold dark:text-white'
+                      }
+                    >
+                      <TbWorldWww className="mr-1 mt-1" size={25} />
+                    </Link>
+                  )}
+                </CardFooter>
+              </Card>
+            </div>
           );
         })}
     </main>

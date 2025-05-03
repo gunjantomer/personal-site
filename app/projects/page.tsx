@@ -17,17 +17,27 @@ import { Badge } from '@/components/ui/badge';
 export default async function Projects() {
   const projects = await fetchProjectsList();
   return (
-    <main className='prose flex w-[80vw] sm:max-w-fit flex-auto flex-col items-center sm:items-start mx-[10vw] sm:mx-0 mb-10'>
-      <h1 className=' text-black dark:text-white'>My Projects</h1>
-      <div className='justify-items-auto inline-grid w-full grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-4'>
+    <main
+      className="prose flex w-[80vw] sm:max-w-fit flex-auto flex-col items-center sm:items-start
+        mx-[10vw] sm:mx-0 mb-10"
+    >
+      <h1 className="text-black dark:text-white">My Projects</h1>
+      <div
+        className="justify-items-auto inline-grid w-full grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3
+          gap-4"
+      >
         {projects.map((project) => {
           const parsedImage = parseContentfulContentImage(
-            project?.image?.fields as AssetFields
+            project?.image?.fields as AssetFields,
           );
           return (
-            <Card key={project.title}>
-              <CardHeader className='text-3xl'>{project.title}</CardHeader>
-              <CardContent className='flex flex-col'>
+            <Card
+              key={project.title}
+              className="transform-gpu lg:transition duration-300 scale-100 lg:hover:scale-[103%]
+                overflow-hidden outline-none"
+            >
+              <CardHeader className="text-3xl">{project.title}</CardHeader>
+              <CardContent className="flex flex-col">
                 {parsedImage && (
                   <img
                     src={parsedImage.src}
@@ -37,29 +47,19 @@ export default async function Projects() {
                     width={500}
                     height={400}
                     alt={parsedImage.alt}
-                    className='self-center'
+                    className="self-center"
                   />
                 )}
                 <RichText document={project.description!} />
                 {project.skillBadges && (
-                  <div className='flex flex-wrap gap-2'>
+                  <div className="flex flex-wrap gap-2">
                     {project.skillBadges.map((skillBadge) => (
                       <Badge key={skillBadge}>{skillBadge}</Badge>
                     ))}
                   </div>
                 )}
               </CardContent>
-              <CardFooter className='gap-4'>
-                {project.link && (
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className={
-                      'dark:text-white font-semibold inline-flex items-center'
-                    }
-                  >
-                    <FaExternalLinkAlt className='mr-1 mt-1' size={25} />
-                  </Link>
-                )}
+              <CardFooter className="gap-4">
                 {project.githubLink && (
                   <Link
                     href={`${project.githubLink}`}
@@ -67,7 +67,7 @@ export default async function Projects() {
                       'dark:text-white font-semibold inline-flex items-center'
                     }
                   >
-                    <FaGithub className='mr-1 mt-1' size={25} />
+                    <FaGithub className="mr-1 mt-1" size={25} />
                   </Link>
                 )}
                 {project.webLink && (
@@ -77,7 +77,17 @@ export default async function Projects() {
                       'dark:text-white font-semibold inline-flex items-center'
                     }
                   >
-                    <TbWorldWww className='mr-1 mt-1' size={25} />
+                    <TbWorldWww className="mr-1 mt-1" size={25} />
+                  </Link>
+                )}
+                {project.link && (
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className={
+                      'dark:text-white font-semibold inline-flex items-center'
+                    }
+                  >
+                    <FaExternalLinkAlt className="mr-1 mt-1" size={21} />
                   </Link>
                 )}
               </CardFooter>
