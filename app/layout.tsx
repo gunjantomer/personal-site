@@ -1,9 +1,5 @@
-// import { config } from '@fortawesome/fontawesome-svg-core';
-// import '@fortawesome/fontawesome-svg-core/styles.css';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-// import { GeistMono } from 'geist/font/mono';
-// import { GeistSans } from 'geist/font/sans';
 import type { Metadata } from 'next';
 // import { draftMode } from 'next/headers';
 // import ExitDraftModeLink from './ExitDraftModeLink';
@@ -13,6 +9,7 @@ import './globals.css';
 import { Barlow } from 'next/font/google';
 import Providers from './components/provider';
 import { joinClassNames } from '@/lib/utils';
+import StalkerCircle from './components/stalker-circle';
 // config.autoAddCss = false;
 
 export const metadata: Metadata = {
@@ -75,6 +72,7 @@ export default async function RootLayout({
               `${font.className}`,
             )}
           >
+            <StalkerCircle />
             <Navbar />
             {children}
             <Footer />
