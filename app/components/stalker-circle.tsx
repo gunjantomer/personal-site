@@ -2,11 +2,11 @@
 import { useEffect, useRef } from 'react';
 import { MdOutlineLocationSearching } from 'react-icons/md';
 export default function StalkerCircle() {
-  const pointerRef = useRef(null);
+  const pointerRef = useRef<HTMLDivElement>(null);
 
   const mouseMove = (e) => {
-    pointerRef.current.style.top = e.clientY - 14 + 'px';
-    pointerRef.current.style.left = e.clientX - 14 + 'px';
+    pointerRef.current!.style.top = e.clientY - 14 + 'px';
+    pointerRef.current!.style.left = e.clientX - 14 + 'px';
   };
   useEffect(() => {
     if (pointerRef) {
@@ -19,7 +19,7 @@ export default function StalkerCircle() {
 
   return (
     <div ref={pointerRef} className="absolute w-8 h-8 items-center bg-red">
-      <MdOutlineLocationSearching size={32} className="text-red-600" />
+      <MdOutlineLocationSearching size={32} className="text-slate-900" />
     </div>
   );
 }
