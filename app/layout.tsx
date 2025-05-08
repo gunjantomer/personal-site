@@ -9,7 +9,7 @@ import './globals.css';
 import { Barlow } from 'next/font/google';
 import Providers from './components/provider';
 import { joinClassNames } from '@/lib/utils';
-import StalkerCircle from './components/stalker-circle';
+import GlowingCursor from './components/glowing-circle';
 // config.autoAddCss = false;
 
 export const metadata: Metadata = {
@@ -65,6 +65,7 @@ export default async function RootLayout({
             Draft mode is on! <ExitDraftModeLink className='underline' />
           </p>
         )} */}
+          <GlowingCursor />
           <main
             className={joinClassNames(
               `mx-auto mt-8 flex max-w-[90vw] sm:max-w-[1200px] flex-auto flex-col px-2
@@ -72,7 +73,6 @@ export default async function RootLayout({
               `${font.className}`,
             )}
           >
-            <StalkerCircle />
             <Navbar />
             {children}
             <Footer />
